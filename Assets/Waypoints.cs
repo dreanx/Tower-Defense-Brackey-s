@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Waypoints : MonoBehaviour
 {
-    public static Transform[] wayPoints;
+    public static Transform[] wayPoints; // By combining static and public, you create a globally accessible array that can be accessed and utilized from any other script in your project without needing an instance of the Waypoints class.
 
     private void Awake()
     {
@@ -38,5 +38,8 @@ Exmaples:
 
         // Access the scale of the third waypoint
         Vector3 thirdWaypointScale = Waypoints.wayPoints[2].localScale;
+
+        // Modifying the scale of the second waypoint
+        Waypoints.wayPoints[1].localScale = new Vector3(2.0f, 2.0f, 2.0f);
 
 */

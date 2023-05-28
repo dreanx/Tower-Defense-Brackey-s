@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour
         // Applying the translation relative to the world coordinate system
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
 
-
         // Check if the enemy has reached the target waypoint
         if (Vector3.Distance(target.position, transform.position) <= 0.2f)
         {
@@ -33,9 +32,17 @@ public class Enemy : MonoBehaviour
 
     private void GetNextWaypoint()
     {
-        // Increment the waypoint index to move to the next waypoint
-        wavepointIndex++;
-        // Set the target to the next waypoint
-        target = Waypoints.wayPoints[wavepointIndex];
+        if (wavepointIndex >= Waypoints.wayPoints.Length - 1)
+        {
+            Destroy(gameObject);
+
+        }
+        else
+        {
+            // Increment the waypoint index to move to the next waypoint
+            wavepointIndex++;
+            // Set the target to the next waypoint
+            target = Waypoints.wayPoints[wavepointIndex];
+        }
     }
 }

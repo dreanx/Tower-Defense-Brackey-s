@@ -18,7 +18,6 @@ public class Waypoints : MonoBehaviour
     }
 }
 
-
 /* To access the Transform data of the waypoints from another script:
 
 - Declare a variable of type Vector3 or Quaternion, depending on which component of the transform you want to access (e.g., position, rotation).
@@ -26,7 +25,6 @@ public class Waypoints : MonoBehaviour
 - Access the wayPoints array using Waypoints.wayPoints.
 - Use the index of the desired waypoint within the array (e.g., [0] for the first waypoint).
 - Access the specific component of the transform (e.g., .position for position, .rotation for rotation, .localScale for scale).
-
 
 Exmaples:
 

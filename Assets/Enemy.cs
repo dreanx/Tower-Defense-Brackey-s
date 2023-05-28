@@ -32,10 +32,11 @@ public class Enemy : MonoBehaviour
 
     private void GetNextWaypoint()
     {
+        // Check if the current waypoint index is the last waypoint
         if (wavepointIndex >= Waypoints.wayPoints.Length - 1)
         {
+            // If it is the last waypoint, destroy the enemy object and exit the method
             Destroy(gameObject);
-
         }
         else
         {

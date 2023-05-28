@@ -9,12 +9,11 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        target = Waypoints.wayPoints[0]; // Set the initial target waypoint to the first waypoint in the Waypoints array
+        target = Waypoints.wayPoints[wavepointIndex]; // Set the initial target waypoint to the first waypoint in the Waypoints array
     }
 
     private void Update()
     {
-        
         // Calculate the direction vector3 from the enemy's current position to the target waypoint
         Vector3 direction = target.position - transform.position;
 
@@ -22,5 +21,21 @@ public class Enemy : MonoBehaviour
         // and using Time.deltaTime to make the movement frame rate independent
         // Applying the translation relative to the world coordinate system
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
+
+
+        // Check if the enemy has reached the target waypoint
+        if (Vector3.Distance(target.position, transform.position) <= 0.2f)
+        {
+            // If the distance is small enough, get the next waypoint
+            GetNextWaypoint();
+        }
+    }
+
+    private void GetNextWaypoint()
+    {
+        // Increment the waypoint index to move to the next waypoint
+        wavepointIndex++;
+        // Set the target to the next waypoint
+        target = Waypoints.wayPoints[wavepointIndex];
     }
 }

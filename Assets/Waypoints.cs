@@ -13,6 +13,7 @@ public class Waypoints : MonoBehaviour
         // Loop through each child waypoint and assign its transform component to the corresponding element in the array.
         for (int i = 0; i < wayPoints.Length; i++) // Loop through those 17 waypoints
         {
+            
             wayPoints[i] = transform.GetChild(i); // Stores the transform component of each child to the wayPoints array we just initialized
         }
     }

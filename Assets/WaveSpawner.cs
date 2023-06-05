@@ -1,46 +1,48 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class WaveSpawner : MonoBehaviour
+namespace Spawner
 {
-    public Transform enemyPrefab;
-
-    public Transform spawnPoint;
-
-    public float timeBetweenWaves = 5f;
-    private float countdown = 2f;
-
-    public TextMeshProUGUI waveCountdownText; // Reference to the UI timer
-
-    private int waveIndex = 0;
-
-    private void Update()
+    public class WaveSpawner : MonoBehaviour
     {
-        countdown -= Time.deltaTime; // Reduce countdown by 1 every seconds
-        waveCountdownText.text = Mathf.Floor(countdown + 1).ToString(); // Display the text without decimal rounded down
+        public Transform enemyPrefab; // Reference of the prefab of the enemy to spawn
+        public Transform spawnPoint; // Reference of the point where the enemy spawns
 
-        if (countdown <= 0)
+        public float timeBetweenWaves = 5f; // Time between each wave
+        private float countdown = 2f; // Countdown timer
+
+        public TextMeshProUGUI waveCountdownText; // Reference to the UI text for displaying countdown
+
+        private int waveIndex = 0; // Index to keep track of the current wave
+
+        private void Update()
         {
-            StartCoroutine(SpawnWave());
-            countdown = timeBetweenWaves; // If countdown reached 0, spawn the wave and make it equal to the time between waves
-        }
-    }
+            countdown -= Time.deltaTime; // Reduce the countdown by the time passed since the last frame
+            waveCountdownText.text = Mathf.Floor(countdown + 1).ToString(); // Update the UI text to display the countdown without decimal places (rounded down)
 
-    private IEnumerator SpawnWave() // We use IEnumerator to create a subroutine (need to using System.Collections;)
-    {
-        Debug.Log("wave incoming");
-        waveIndex++;
-        for (int i = 0; i < waveIndex; i++)
+            if (countdown <= 0)
+            {
+                StartCoroutine(SpawnWave()); // If the countdown reaches zero, start spawning a wave
+                countdown = timeBetweenWaves; // Reset the countdown to the time between waves
+            }
+        }
+
+        private IEnumerator SpawnWave()
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(0.5f); // Subroutine to make the enemies spawn every half seconds instead of all at once
-        }
-    }
+            Debug.Log("Wave incoming!");
+            waveIndex++; // Increment the wave index for the current wave
 
-    private void SpawnEnemy()
-    {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            for (int i = 0; i < waveIndex; i++)
+            {
+                SpawnEnemy(); // Spawn an enemy
+                yield return new WaitForSeconds(0.5f); // Wait for half a second before spawning the next enemy
+            }
+        }
+
+        private void SpawnEnemy()
+        {
+            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation); // Instantiate an enemy at the spawn point
+        }
     }
 }

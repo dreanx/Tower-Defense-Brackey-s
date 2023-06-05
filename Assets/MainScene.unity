@@ -3308,6 +3308,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 3599717964328042856, guid: c8422e62ed1633b42943524ff65fdabf, type: 3}
   spawnPoint: {fileID: 1958999413}
   timeBetweenWaves: 5
+  waveCountdownText: {fileID: 1412645845}
 --- !u!4 &421870141
 Transform:
   m_ObjectHideFlags: 0
@@ -9741,7 +9742,7 @@ GameObject:
   - component: {fileID: 1412645846}
   - component: {fileID: 1412645845}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: WaveCountdownTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9787,7 +9788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 40
+  m_text: Wave hype
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}

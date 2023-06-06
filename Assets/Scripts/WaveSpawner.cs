@@ -6,7 +6,7 @@ public class WaveSpawner : MonoBehaviour
 {
     public Transform enemyPrefab; // Reference of the prefab of the enemy to spawn
 
-    public Transform spawnPoint; // Point where the enemy spawns
+    public Transform spawnPoint; // Reference to the point where the enemy spawns
 
     public float timeBetweenWaves = 5f; // Time between each wave
     private float countdown = 2f; // Countdown timer
